@@ -1,3 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Chatbot background animations */
+@keyframes floatSlow {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(100px, -150px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes floatReverse {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-120px, 100px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes floatDiagonal {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(150px, 150px); }
+  100% { transform: translate(0, 0); }
+}

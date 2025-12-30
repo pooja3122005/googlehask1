@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AreaChart,
   Area,
@@ -16,7 +17,7 @@ import {
   Cell,
   Legend
 } from "recharts";
-import { MessageSquare, Users, Clock, TrendingUp, BarChart2, PieChart, Settings, FileText, Award, HelpCircle, Bell, Mail, Search } from "lucide-react";
+import { MessageSquare, Users, Clock, TrendingUp, BarChart2, PieChart, Settings, FileText, Award, HelpCircle, Bell, Mail, Search, Navigation } from "lucide-react";
 
 /* ------------------ Mock Data ------------------ */
 
@@ -65,6 +66,7 @@ const metrics = [
 /* ------------------ Component ------------------ */
 
 const Dashboard = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -82,17 +84,18 @@ const Dashboard = () => {
           </div>
           <nav className="space-y-1">
             {[
-              { name: "Dashboard", icon: <BarChart2 size={18} />, active: true },
-              { name: "Live Chats", icon: <MessageSquare size={18} />, active: false },
-              { name: "Analytics", icon: <PieChart size={18} />, active: false },
-              { name: "Students", icon: <Users size={18} />, active: false },
-              { name: "Knowledge Base", icon: <FileText size={18} />, active: false },
-              { name: "Reports", icon: <Award size={18} />, active: false },
-              { name: "Help Center", icon: <HelpCircle size={18} />, active: false },
-              { name: "Settings", icon: <Settings size={18} />, active: false }
+              { name: "Dashboard", icon: <BarChart2 size={18} />, active: true, path: "/" },
+              { name: "Live Chats", icon: <MessageSquare size={18} />, active: false, path: "/live-chats" },
+              { name: "Analytics", icon: <PieChart size={18} />, active: false, path: "/analytics" },
+              { name: "Students", icon: <Users size={18} />, active: false, path: "/students" },
+              { name: "Knowledge Base", icon: <FileText size={18} />, active: false, path: "/knowledge-base" },
+              { name: "Reports", icon: <Award size={18} />, active: false, path: "/reports" },
+              { name: "Help Center", icon: <HelpCircle size={18} />, active: false, path: "/help-center" },
+              { name: "Settings", icon: <Settings size={18} />, active: false, path: "/settings" }
             ].map((item, i) => (
               <button
                 key={i}
+                onClick={() => navigate(item.path)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm ${
                   item.active ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-600 hover:bg-gray-50"
                 }`}
